@@ -56,12 +56,12 @@
     <h1 style=" color: red;">登入 </h1>
     
     <?php
-        if ($hint != '') {
+        if (isset($hint) && $hint != '') {
     ?>
         <h3 align="center" style="color: red"><?= $hint ?></h3>
     <?php
+            unset($hint);
         }
-        unset($hint);
     ?>
     <form action="login.php" method="POST">
 
@@ -73,8 +73,8 @@
         </p>
 
         <div align="center">
-            <input type="radio" name="job" value="family" <?= $_POST['job'] === 'family' ? 'checked' : '' ?>>家屬
-            <input type="radio" name="job" value="caretaker" <?= $_POST['job'] === 'caretaker' ? 'checked' : '' ?>>看護
+            <input type="radio" name="job" value="family" <?= ($_POST['job'] ?? '') === 'family' ? 'checked' : '' ?>>家屬
+            <input type="radio" name="job" value="caretaker" <?= ($_POST['job'] ?? '') === 'caretaker' ? 'checked' : '' ?>>看護
         </div>
 
         <input type="hidden" name="token" value="<?= rand() ?>" />

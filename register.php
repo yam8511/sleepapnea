@@ -75,12 +75,12 @@
     <h1 style=" color: red;">註冊 </h1>
 
     <?php
-        if ($hint != '') {
+        if (isset($hint) && $hint != '') {
     ?>
         <h3 align="center" style="color: red"><?= $hint ?></h3>
     <?php
+            unset($hint);
         }
-        unset($hint);
     ?>
 
     <form action="register.php" method="POST">
