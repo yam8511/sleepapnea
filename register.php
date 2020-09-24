@@ -84,15 +84,15 @@
     ?>
 
     <form action="register.php" method="POST">
-        <p align="center"> 帳號 <input type="text" name="username" value="<?= $_POST['username']?>"></p>
-        <p align="center">密碼 <input type="password" name="password" value="<?= $_POST['password']?>"></p>
-        <p align="center">姓名 <input type="text" name="name" value="<?= $_POST['name']?>"></p>
-        <p align="center">住址 <input type="text" name="address" value="<?= $_POST['address']?>"></p>
-        <p align="center">手機號碼 <input type="text" name="phone" value="<?= $_POST['phone']?>"></p>
+        <p align="center"> 帳號 <input type="text" name="username" value="<?= $_POST['username'] ?? '' ?>"></p>
+        <p align="center">密碼 <input type="password" name="password" value="<?= $_POST['password'] ?? '' ?>"></p>
+        <p align="center">姓名 <input type="text" name="name" value="<?= $_POST['name'] ?? '' ?>"></p>
+        <p align="center">住址 <input type="text" name="address" value="<?= $_POST['address'] ?? '' ?>"></p>
+        <p align="center">手機號碼 <input type="text" name="phone" value="<?= $_POST['phone'] ?? '' ?>"></p>
 
         <div align="center">
-            <input type="radio" name="job" value="family" <?= $_POST['job'] === 'family' ? 'checked' : '' ?>>家屬
-            <input type="radio" name="job" value="caretaker" <?= $_POST['job'] === 'caretaker' ? 'checked' : '' ?>>看護
+            <input type="radio" name="job" value="family" <?= ($_POST['job'] ?? '') === 'family' ? 'checked' : '' ?>>家屬
+            <input type="radio" name="job" value="caretaker" <?= ($_POST['job'] ?? '') === 'caretaker' ? 'checked' : '' ?>>看護
         </div>
 
         <input type="hidden" name="token" value="<?= rand() ?>" />
