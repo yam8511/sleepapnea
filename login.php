@@ -19,6 +19,7 @@
                 if ($row) {
                     // 註冊成功，自動登入
                     setcookie("session", base64_encode(json_encode([
+                        'account' => $row["{$_job}_account"],
                         'name' => $row['name'],
                         'job' => $_job,
                     ])), time()+3600*24);
@@ -63,7 +64,7 @@
             unset($hint);
         }
     ?>
-    <form action="login.php" method="POST">
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
 
         <p align="center">
             帳號 <input type="text" name="username" value="<?= $_POST['username'] ?>" />
