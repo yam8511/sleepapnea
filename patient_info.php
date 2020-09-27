@@ -27,7 +27,8 @@ if (isset($_GET['start_time']) && isset($_GET['end_time'])) {
     FROM `data_collection` as dc, `patient` as pt, `test_time` as tt 
     WHERE tt.patient_ID = pt.patient_ID AND tt.machine_ID = dc.machine_ID
     AND pt.patient_ID = {$patientID}
-    AND dc.time BETWEEN '{$startTime}' AND '{$endTime}';
+    AND dc.time BETWEEN '{$startTime}' AND '{$endTime}'
+    ORDER BY dc.time;
     ";
 
     $patientData = [];
@@ -48,7 +49,6 @@ if (isset($_GET['start_time']) && isset($_GET['end_time'])) {
                 // 'humidity' =>  floatval($data['humidity']),
             ];
         }
-        sort($jsData);
 
         $jsData = json_encode($jsData, JSON_UNESCAPED_UNICODE);
 ?>
@@ -81,7 +81,7 @@ window.onload = function() {
             title: {text},
             data: [{
                 type: "spline",
-                xValueFormatString: "YYYY-MM-DD HH:MM:ss",
+                xValueFormatString: "YYYY-MM-DD HH:mm:ss",
                 xValueType: "dateTime",
                 dataPoints: rawData.map((item) => ({
                     x: new Date(item['time']),
@@ -125,8 +125,9 @@ window.onload = function() {
     <input type="hidden" name="id" value="<?= $patientID ?>">
 
     <p>
+        <a href="/">上一頁</a>
         <input type="submit" value="查詢">
-    </p>    
+    </p>
 </form>
 
 <?php

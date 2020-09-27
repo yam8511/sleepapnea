@@ -1,6 +1,5 @@
 <?php
     require('./check_login.php');
-    require('./auth_user.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +13,7 @@
 
 <body>
     <?php
+        require('auth_user.php');
         require('show_auth.php');
         require('patient_list.php');
         // if ($_auth['job'] === 'caretaker') {

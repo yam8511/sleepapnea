@@ -78,7 +78,7 @@
             <input type="radio" name="job" value="caretaker" <?= ($_POST['job'] ?? '') === 'caretaker' ? 'checked' : '' ?>>看護
         </div>
 
-        <input type="hidden" name="token" value="<?= rand() ?>" />
+        <input type="hidden" name="token" value="<?= base64_encode(rand()) ?>" />
 
         <br>
         <div align="center">

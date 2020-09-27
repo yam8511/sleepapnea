@@ -32,10 +32,13 @@ tr:nth-child(even) {
 
 <div>
     <h1 style=" color: red;">家屬</h1>
-    <div align="center">
-        <button type="button">新增病人資料</button>
-    </div>
-    <hr>
+    <?php if ($_auth['job'] === 'caretaker') { ?>
+        <div align="center">
+            <a href="/add.php"><button type="button">新增病人資料</button></a>
+        </div>
+        <hr>
+    <?php } ?>
+
     <?php if (count($patient) == 0) { ?>
     <h2 align="center">目前無病人資料</h2>
     <?php 
